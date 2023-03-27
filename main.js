@@ -4,34 +4,26 @@ function computerOption() {
   return Math.floor(Math.random() * 3);
 }
 
-function chooseRock() {
+function chooseOption(optionIndex) {
   var compvalue = computerOption();
   var compOption = options[compvalue];
-  var yourOption = options[0];
+  var yourOption = options[optionIndex];
 
   var result = gameResult(compOption, yourOption);
+  displayOption(compOption, yourOption);
   showResult(result);
   // console.log(result);
 }
 
-function choosePaper() {
-  var compvalue = computerOption();
-  var compOption = options[compvalue];
-  var yourOption = options[1];
+function displayOption(compOption, yourOption) {
+  let compImageElement = document.getElementById("compImage");
+  let yourImageElement = document.getElementById("yourImage");
 
-  var result = gameResult(compOption, yourOption);
-  showResult(result);
-  // console.log(result);
-}
+  compImageElement.style.visibility = "visible";
+  yourImageElement.style.visibility = "visible";
 
-function chooseScissor() {
-  var compvalue = computerOption();
-  var compOption = options[compvalue];
-  var yourOption = options[2];
-
-  var result = gameResult(compOption, yourOption);
-  showResult(result);
-  //console.log(result);
+  compImageElement.src = compOption + ".webp";
+  yourImageElement.src = yourOption + ".webp";
 }
 
 function gameResult(computer, you) {
